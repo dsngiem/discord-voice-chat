@@ -1,0 +1,17 @@
+.webview_chat {
+    position: fixed;
+    width: 25%;
+    height: 100%;
+    left: 0%;
+    top: 0%;
+    border: 0px;
+}
+
+.webview_video {
+    position: fixed;
+    width: 75%;
+    height: 100%;
+    left: 25%;
+    top: 0%;
+    border: 0px;
+}

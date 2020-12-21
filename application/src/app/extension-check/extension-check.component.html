@@ -1,0 +1,6 @@
+<p *ngIf="isInstalled == null">
+  Checking if the extension is installed...
+</p>
+
+<p *ngIf="isInstalled">Extension is installed!</p>
+<p *ngIf="!isInstalled">Please install the <a href="">Discord Voice Chat Extension for Chrome</a> or <a href="">Discord Voice Chat Extension for Firefox</a>.</p>

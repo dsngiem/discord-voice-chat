@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "beehive-chat"
+  },
+  "targets": {
+    "beehive-chat": {
+      "hosting": {
+        "application": [
+          "beehive-chat"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+<div *ngIf="showDebug" class="debug">{{ url }}</div>
+<iframe
+  allow="midi *; fullscreen *; geolocation *; picture-in-picture *; encrypted-media *; autoplay *; camera *; microphone *;"
+  sandbox="allow-forms allow-presentation allow-same-origin allow-scripts allow-popups"
+  [src]="trustedUrl"
+  allowfullscreen=""
+  referrerpolicy="origin"
+  allowtransparency=""
+  (load)="onLoad($event)"
+></iframe>
