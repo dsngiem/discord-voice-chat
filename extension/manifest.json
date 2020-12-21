@@ -1,7 +1,7 @@
 {
     "name": "Discord Video Chat",
     "short_name": "Discord Video Chat",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Place Discord Video Channel and Text Channel side-by-side.",
     "icons": {
       "16": "icon-16.png",

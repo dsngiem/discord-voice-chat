@@ -39,16 +39,10 @@ const TOP_FRAME = 0
 const HEADER_PREFIX = 'x-metastream'
 const METASTREAM_APP_URL = 'https://app.getmetastream.com'
 const isMetastreamUrl = url =>
-  url.startsWith(METASTREAM_APP_URL) ||
-  url.startsWith('http://local.getmetastream.com') ||
-  url.startsWith('http://localhost:8080') ||
-  url.startsWith('https://localhost:8080') ||
   url.startsWith('http://localhost:4200') ||
   url.startsWith('https://localhost:4200') ||
   url.startsWith('http://beehive-chat.web.app/') ||
-  url.startsWith('https://beehive-chat.web.app/') ||
-  url.startsWith('http://72.225.207.148:8080') ||
-  url.startsWith('file:///D:/Development/discord-video-chat/sandbox-iframe-test.html')
+  url.startsWith('https://beehive-chat.web.app/')
 const isTopFrame = details => details.frameId === TOP_FRAME
 const isValidAction = action => typeof action === 'object' && typeof action.type === 'string'
 const isFirefox = () => navigator.userAgent.toLowerCase().includes('firefox')

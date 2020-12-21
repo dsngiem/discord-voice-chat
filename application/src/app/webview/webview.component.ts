@@ -9,7 +9,6 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 })
 
 export class WebviewComponent implements OnInit, OnChanges {
-  @Input() id: number = 0
   @Input() url: string = ""
   trustedUrl: SafeResourceUrl;
 
@@ -23,7 +22,7 @@ export class WebviewComponent implements OnInit, OnChanges {
     private sanitizer: DomSanitizer
   ) {
     if (this.url == "") {
-      this.url = `about:blank?webview=${this.id}&allowScripts=true&popup=false`
+      this.url = `about:blank`
     }
 
     this.trustedUrl = sanitizer.bypassSecurityTrustResourceUrl(this.url);
@@ -49,10 +48,6 @@ export class WebviewComponent implements OnInit, OnChanges {
   onLoad(event: Event) {
     let iframeElement: HTMLIFrameElement = event.target as HTMLIFrameElement
     console.debug('[Webview Component]', `${iframeElement.src}`);
-
-    if (this.url != iframeElement.src) {
-      this.url = iframeElement.src
-    }
   }
 
 //   addEventListener(eventName: string, listener: (...args: any[]) => void) {

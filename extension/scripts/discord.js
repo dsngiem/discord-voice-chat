@@ -5,6 +5,22 @@
         return loginButton == null
     }
 
+    function checkMemberList() {
+        var memberList = document.querySelector("div.membersWrap-2h-GB4.hiddenMembers-2dcs_q")
+
+        if (memberList) {
+            requestIdleCallback(() => {
+                var memberListButton = document.querySelector("div[aria-label='Member List']")
+
+                if (memberListButton) {
+                    requestIdleCallback(() => {
+                        memberListButton.click()
+                    })
+                }
+            })
+        }
+    }
+
     function setupEventListeners() {
         window.addEventListener("popstate", function(event) {
             console.debug("[event:popstate]", event.state);
@@ -75,15 +91,24 @@
         buttonVideotext.title = "Open Text Chat"
         buttonVideotext.addEventListener("click", function(event) {
             event.preventDefault()
-            var videotext = document.querySelector("a[data-list-item-id=channels___719768831693946893")
-            if (videotext) {
-                videotext.click()
-            }
+            document.body.classList.remove("hideNavigation")
+            document.body.classList.remove("hideSidebar")
 
-            setTimeout(() => {
-                document.body.classList.remove("hideNavigation")
-                document.body.classList.add("hideSidebar")
-            }, 50)
+            requestIdleCallback(() => {
+                var videotext = document.querySelector("a[data-list-item-id=channels___719768831693946893")
+
+                requestIdleCallback(() => {
+                    if (videotext) {
+                        videotext.click()
+                        requestIdleCallback(checkMemberList)
+                    }
+                }, {timeout: 50})
+
+                requestIdleCallback(() => {
+                    document.body.classList.remove("hideNavigation")
+                    document.body.classList.add("hideSidebar")
+                }, {timeout: 50})
+            }, {timeout: 50})
         })
 
         function checkForVideochat() {
@@ -106,10 +131,11 @@
 
             if (pushToTalkButton) {
                 pushToTalkButton.click()
-                requestIdleCallback(checkForVideochat)
-            } else {
-                requestIdleCallback(checkForPushToTalk)
             }
+
+            setTimeout(() => {
+                requestIdleCallback(checkForVideochat)
+            }, 50)
         }
 
         var buttonVideochat = document.createElement("span")
@@ -118,14 +144,20 @@
         buttonVideochat.title = "Open Video Chat"
         buttonVideochat.addEventListener("click", function(event) {
             event.preventDefault()
-            var videochat = document.querySelector("a[data-list-item-id=channels___719773618707365889")
+            document.body.classList.remove("hideNavigation")
+            document.body.classList.remove("hideSidebar")
 
-            if (videochat) {
-                videochat.click()
-            }
+            requestIdleCallback(() => {
+                var videochat = document.querySelector("a[data-list-item-id=channels___719773618707365889")
 
-            checkForPushToTalk()
+                if (videochat) {
+                    videochat.click()
+                }
 
+                setTimeout(() => {
+                    requestIdleCallback(checkForPushToTalk)
+                }, 50)
+            }, {timeout: 50})
         })
 
 
